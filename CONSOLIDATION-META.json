@@ -21,12 +21,10 @@
   "schema_version": "1.0",
   "snapshot": {
     "category": "02-electromagnetics-optics-and-wave-simulation",
-    "copied_bytes": 4952173,
-    "copied_files": 351,
+    "copied_bytes": 5372603,
+    "copied_files": 353,
     "date": "2026-08-25",
-    "excluded_directories": [
-      "tests/data"
-    ],
+    "excluded_directories": [],
     "excluded_files": [],
     "folder": "fdtdx-main",
     "kind": "independent-code-snapshot",
