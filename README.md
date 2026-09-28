@@ -82,3 +82,21 @@ If you find this repository helpful for you work, please consider citing:
 
 ## Acknowedgement
 This project was developed at the [Institute of Information Processing](https://www.tnt.uni-hannover.de/) at Leibniz University Hannover, Germany and sponsored by the cluster of excellence [PhoenixD](https://www.phoenixd.uni-hannover.de/en/) (Photonics, Optics, Engineering, Innovation across Disciplines).
+
+
+## Step-by-step user guide
+
+1. **Install the package and a JAX backend.** For CPU work run <code>python -m pip install fdtdx</code>. For GPU/TPU work, install the matching JAX extra shown above and follow the vendor setup instructions so the driver/runtime and Python package agree.
+2. **Run a checked-in example.** From the repository root, run <code>python examples/simulate_gaussian_source.py</code>. Confirm the simulation device and output dimensions before scaling the grid; the [examples](examples/) also cover anisotropic/dispersive media, Bloch bands, refraction, and inverse design.
+3. **Define the design domain.** Set physical units, grid resolution, boundary conditions, materials, and object placement. Add the excitation source and field/flux monitors required by the question.
+4. **Run the forward simulation.** Configure the time steps, memory/device settings, and output sampling; run the FDTD loop and inspect the recorded fields and monitor values.
+5. **Optimize only after the forward result is stable.** Define a scalar objective from the monitors, differentiate it with JAX, and update the differentiable design parameters. Check gradients on a small grid before increasing the domain or time horizon.
+6. **Scale the workload.** Use the documented multi-GPU settings when one device is insufficient, monitor memory use, and save configuration and random seeds alongside the output for reproducibility.
+
+### Functionality map
+
+- 3D electromagnetic FDTD simulation for photonic nanostructures; flexible absolute/relative object placement and sizing.
+- JAX compilation and differentiation for gradient-based inverse design; GPU support and multi-device execution through the installed JAX backend.
+- Material/geometry setup, sources, boundary configuration, field recording, monitor-derived objectives, and optimization are demonstrated in [examples](examples/) and [docs](docs/).
+- Use the [API reference and tutorials](https://fdtdx.readthedocs.io/en/latest/) for supported material models, placements, monitor types, and solver options.
+
